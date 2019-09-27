@@ -18,7 +18,12 @@ var pokemonRepository = (function(){
   }
 
   // addListItem function written by exchanging querySelector with jQuery
-
+  //created list with buttons that have pokemons' names on it
+  function addListItem(pokemon) {
+    var $pokelist = $('.pokemon-list');
+    var $listItem = $('<li><button class="name-button">pokemon.name[0].toUpperCase()+pokemon.name.slice(1)</button></li>');
+    $pokelist.append($listItem);
+  }
 
   return {
     getAll: getAll,
