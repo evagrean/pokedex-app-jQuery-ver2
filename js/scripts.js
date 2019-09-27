@@ -23,6 +23,9 @@ var pokemonRepository = (function(){
     var $pokelist = $('.pokemon-list');
     var $listItem = $('<li><button class="name-button">pokemon.name[0].toUpperCase()+pokemon.name.slice(1)</button></li>');
     $pokelist.append($listItem);
+    $('button').on('click', function(event) {
+      showDetails(pokemon);      
+    });
   }
 
   return {
