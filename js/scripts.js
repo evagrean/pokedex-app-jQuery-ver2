@@ -112,7 +112,22 @@ var pokemonRepository = (function(){
 })();
 
 pokemonRepository.loadList().then(function() {
-  pokemonRepository.getAll().forEach(function(pokemon) {
+  $.each(pokemonRepository.getAll(), function(index, pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
 });
+
+// Example for using jQuery $.each()
+//************************************************
+// var arr = ['a', 'b', 'c'];
+// $.each(arr , function (index, value){
+//   console.log(arr);
+// });
+
+// pokemonRepository.loadList().then(function(){
+//   var pokemons = pokemonRepository.getAll();
+//
+//   $.each(pokemons, function(index, pokemon){
+//         addListItem(pokemon);
+//   });
+// });
