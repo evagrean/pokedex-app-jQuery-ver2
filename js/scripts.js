@@ -116,7 +116,7 @@ pokemonRepository.loadList().then(function() {
   });
 });
 
-// Example for using jQuery $.each()
+// Example for using jQuery $.each() --- REMOVE WHEN PAGE WORKS AS EXPECTED!!!!!!
 //************************************************
 // var arr = ['a', 'b', 'c'];
 // $.each(arr , function (index, value){
