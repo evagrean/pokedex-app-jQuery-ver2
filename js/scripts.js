@@ -31,18 +31,23 @@ var pokemonRepository = (function(){
   }
 
   // function for fetching data from API - jQuery: ajax()
-  *************************************************************
-  // function loadList() {
-  //   return $.ajax(apiUrl, {dataType: 'json'}).then(function(response) {
-  //     return response.json();
-  //   }).then(function(json) {
-  //
-  //   })
-  // }
-  //
-  // function loadDetails() {
-  //
-  // }
+  function loadList() {
+    return $.ajax(apiUrl, {dataType: 'json'}).then(function(item) {
+      $.each(item.results, function(item){
+        var pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+      });
+      add(pokemon);
+    }).catch(function(e) {
+      console.error(e);
+    });
+  }
+
+  function loadDetails() {
+
+  }
 
   //showDetails function shows pokemon's details after clicking on pokemons name
   function showDetails(item) {
@@ -62,9 +67,9 @@ var pokemonRepository = (function(){
     // Create elements that hold name and detailed information about pokemon
     var $modal = $('<div class="modal"></div>');
     var $nameElement = $('<h1></h1>').text(item.name[0].toUpperCase()+item.name.slice(1));
-    var $imageElement = $('<img src="item.imageUrl" class="modal-img">');
-    var $heightElement = $('<p></p>').text('Height: ' + item.height);
-    var $typesElement = $('<p></p>').text('Types: ' + item.types);
+    var $imageElement = $('<img src="item.imageUrl" class="pokemon-img">');
+    var $heightElement = $('<p class="pokemon-height"></p>').text('Height: ' + item.height);
+    var $typesElement = $('<p class="pokemon-types"></p>').text('Types: ' + item.types);
 
     // Add closing button for modal with event listener
     var $closeButtonElement = $('<button class="modal-close"></button>').text('X');
