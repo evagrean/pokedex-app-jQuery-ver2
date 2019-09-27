@@ -25,7 +25,7 @@ var pokemonRepository = (function(){
     var $button = $('<button class="name-button"></button>'').text(pokemon.name[0].toUpperCase()+pokemon.name.slice(1));
     $listItem.append($button);
     $pokelist.append($listItem);
-    $('button').on('click', function(event) {
+    $button.on('click', function(event) {
       showDetails(pokemon);
     });
   }
@@ -122,12 +122,4 @@ pokemonRepository.loadList().then(function() {
 // var arr = ['a', 'b', 'c'];
 // $.each(arr , function (index, value){
 //   console.log(arr);
-// });
-
-// pokemonRepository.loadList().then(function(){
-//   var pokemons = pokemonRepository.getAll();
-//
-//   $.each(pokemons, function(index, pokemon){
-//         addListItem(pokemon);
-//   });
 // });
