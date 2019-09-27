@@ -1,7 +1,7 @@
 /* Colors used
-font-color h1: #2D3657;
-background-color body: #CDE7F0;
-background-color buttons: #feffca;
+font-color and border-color: #2D3657;
+background-color body and modal container: #d1d6de;
+background-color buttons and modal: #f6f7f7;
 
 */
 
@@ -9,7 +9,7 @@ background-color buttons: #feffca;
 body {
   font-family: 'Manjari', sans-serif;
   font-size: 20px;
-  background-color: #CDE7F0;
+  background-color: #d1d6de;
 }
 
 .container {
@@ -50,21 +50,22 @@ h1 {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: #CDE7F0;
+  background-color: #d1d6de;
   opacity: 0.9;
   display: grid;
   text-align: center;
 }
 
 .modal {
-  background-color: #feffca;
+  background-color: #f6f7f7;
   margin: 10% auto; /* 10% from the top and centered */
   padding: 20px;
-  border-radius: 2px;
+  border-radius: 5px;
   width: 90%;
   max-width: 700px;
   height: auto;
   text-align: center;
+  box-shadow: 0 4px 8px 0 #2D3657;
 }
 
 .modal-close {
@@ -80,9 +81,11 @@ h1 {
 
 .modal-close:hover,
 .modal-close:focus {
-  color: #000;
+  color: #1B2034;
+  font-size: 25px;
   text-decoration: none;
   cursor: pointer;
+  transition: color 0.3s;
 }
 
 .modal h1 {
@@ -105,12 +108,21 @@ ul {
   margin: 2px auto;
   width: 100%;
   height: 70px;
-  border: none;
-  border-radius: 2px;
+  border: 0.3px solid;
+  border-radius: 5px;
+  border-color:  #2D3657;
   text-align: left;
   padding-left: 10px;
   font-size: 25px;
   color: #2D3657;
-  background-color: #feffca;
-  opacity: 0.8;
+  background-color: #f6f7f7;
+  transition: box-shadow 0.3s;
+}
+
+.name-button:hover,
+.name-button:focus,
+.name-button:active {
+  box-shadow: 0 4px 8px 0 #2D3657;
+  cursor: pointer;
+  border: none;
 }
