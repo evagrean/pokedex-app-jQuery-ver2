@@ -24,7 +24,23 @@ var pokemonRepository = (function(){
     var $listItem = $('<li><button class="name-button">pokemon.name[0].toUpperCase()+pokemon.name.slice(1)</button></li>');
     $pokelist.append($listItem);
     $('button').on('click', function(event) {
-      showDetails(pokemon);      
+      showDetails(pokemon);
+    });
+  }
+
+  // function for fetching data from API - jQuery: ajax()
+  function loadList() {
+    return $.ajax(apiUrl, {dataType: 'json'}).then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      
+    })
+  }
+
+  function showDetails(item) {
+    pokemonRepository.loadDetails(item).then(function() {
+      console.log(item);
+      // show the modal - create the modal directly inside showDetails?
     });
   }
 
@@ -40,3 +56,9 @@ var pokemonRepository = (function(){
   };
 
 })();
+
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+});
