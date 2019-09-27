@@ -62,20 +62,19 @@ var pokemonRepository = (function(){
     pokemonRepository.loadDetails(item).then(function() {
       console.log(item);
       showModal(item);
-      // show the modal - create the modal directly inside showDetails?
     });
   }
 
   function showModal(item) {
     var $modalContainer = $('#modal-container');
 
-    //CLear all existing content in modal
+    //Clear all existing content in modal
     $modalContainner.empty();
 
     // Create elements that hold name and detailed information about pokemon
     var $modal = $('<div class="modal"></div>');
     var $nameElement = $('<h1></h1>').text(item.name[0].toUpperCase()+item.name.slice(1));
-    var $imageElement = $('<img src="item.imageUrl" class="pokemon-img">');
+    var $imageElement = $('<img class="pokemon-img" alt="a picture of current pokemon">').attr('src', item.imageUrl);
     var $heightElement = $('<p class="pokemon-height"></p>').text('Height: ' + item.height);
     var $typesElement = $('<p class="pokemon-types"></p>').text('Types: ' + item.types);
 
