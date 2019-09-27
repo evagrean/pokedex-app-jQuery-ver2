@@ -45,8 +45,16 @@ var pokemonRepository = (function(){
     });
   }
 
-  function loadDetails() {
-
+  function loadDetails(item) {
+    var $url = item.detailsUrl;
+    return $.ajax(url).then(function(details) {
+      // details are added to the item
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = Object.keys(details.types);
+    }).catch(function(e) {
+      console.error(e);
+    });
   }
 
   //showDetails function shows pokemon's details after clicking on pokemons name
