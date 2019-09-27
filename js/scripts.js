@@ -21,7 +21,9 @@ var pokemonRepository = (function(){
   //created list with buttons that have pokemons' names on it
   function addListItem(pokemon) {
     var $pokelist = $('.pokemon-list');
-    var $listItem = $('<li><button class="name-button">pokemon.name[0].toUpperCase()+pokemon.name.slice(1)</button></li>');
+    var $listItem = $('<li></li>');
+    var $button = $('<button class="name-button"></button>'').text(pokemon.name[0].toUpperCase()+pokemon.name.slice(1));
+    $listItem.append($button);
     $pokelist.append($listItem);
     $('button').on('click', function(event) {
       showDetails(pokemon);
@@ -29,19 +31,58 @@ var pokemonRepository = (function(){
   }
 
   // function for fetching data from API - jQuery: ajax()
-  function loadList() {
-    return $.ajax(apiUrl, {dataType: 'json'}).then(function(response) {
-      return response.json();
-    }).then(function(json) {
-      
-    })
-  }
+  *************************************************************
+  // function loadList() {
+  //   return $.ajax(apiUrl, {dataType: 'json'}).then(function(response) {
+  //     return response.json();
+  //   }).then(function(json) {
+  //
+  //   })
+  // }
+  //
+  // function loadDetails() {
+  //
+  // }
 
+  //showDetails function shows pokemon's details after clicking on pokemons name
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function() {
       console.log(item);
+      showModal(item);
       // show the modal - create the modal directly inside showDetails?
     });
+  }
+
+  function showModal(item) {
+    var $modalContainer = $('#modal-container');
+
+    //CLear all existing content in modal
+    $modalContainner.empty();
+
+    // Create elements that hold name and detailed information about pokemon
+    var $modal = $('<div class="modal"></div>');
+    var $nameElement = $('<h1></h1>').text(item.name[0].toUpperCase()+item.name.slice(1));
+    var $imageElement = $('<img src="item.imageUrl" class="modal-img">');
+    var $heightElement = $('<p></p>').text('Height: ' + item.height);
+    var $typesElement = $('<p></p>').text('Types: ' + item.types);
+
+    // Add closing button for modal with event listener
+    var $closeButtonElement = $('<button class="modal-close"></button>').text('X');
+    $closeButtonElement.on('click', hideModal);
+
+    // Appending modal and its content to page
+    $modal.append($nameElement);
+    $modal.append($imageElement);
+    $modal.append($heightElement);
+    $modal.append($typesElement);
+    $modalContainer.append($modal);
+
+    $modalContainer.addClass('is-visible');
+  }
+
+  function hideModal() {
+    var $modalContainer = $('#modal-container');
+    $modalContainer.removeClass('is-visible');
   }
 
   return {
