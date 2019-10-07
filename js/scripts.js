@@ -93,6 +93,7 @@ var pokemonRepository = (function(){
     $modalContainer.addClass('is-visible');
   }
 
+  // Hides Modal when clicked on closing button [see eventListener]
   function hideModal() {
     var $modalContainer = $('#modal-container');
     $modalContainer.removeClass('is-visible');
