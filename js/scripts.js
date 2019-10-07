@@ -111,7 +111,7 @@ var pokemonRepository = (function(){
   // EventListener that hides modal when clicking outside
   var $modalContainer = $('#modal-container');
   $modalContainer.on('click', function(event) {
-    var $target = event.target;
+    var $target = $(event.target);
     if ($target === $modalContainer) {
       hideModal();
     }
