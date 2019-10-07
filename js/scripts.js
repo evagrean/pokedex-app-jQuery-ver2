@@ -70,7 +70,7 @@ var pokemonRepository = (function(){
     var $modalContainer = $('#modal-container');
 
     //Clear all existing content in modal
-    $modalContainner.empty();
+    $modalContainer.empty();
 
     // Create elements that hold name and detailed information about pokemon
     var $modal = $('<div class="modal"></div>');
