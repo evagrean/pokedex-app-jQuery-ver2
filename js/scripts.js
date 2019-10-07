@@ -100,7 +100,7 @@ var pokemonRepository = (function(){
   }
 
   // EventListener that hides modal when pressing esc
-  $window.on('keydown', function(event) {
+  $(window).on('keydown', function(event) {
     var $modalContainer = $('#modal-container');
     if (event.key === 'Escape' && $modalContainer.hasClass('is-visible')) {
       hideModal();
