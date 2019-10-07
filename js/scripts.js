@@ -22,7 +22,7 @@ var pokemonRepository = (function(){
   function addListItem(pokemon) {
     var $pokelist = $('.pokemon-list');
     var $listItem = $('<li></li>');
-    var $button = $('<button class="name-button"></button>'').text(pokemon.name[0].toUpperCase()+pokemon.name.slice(1));
+    var $button = $('<button class="name-button"></button>').text(pokemon.name[0].toUpperCase()+pokemon.name.slice(1));
     $listItem.append($button);
     $pokelist.append($listItem);
     $button.on('click', function(event) {
@@ -33,21 +33,22 @@ var pokemonRepository = (function(){
   // function for fetching data from API - jQuery: ajax()
   function loadList() {
     return $.ajax(apiUrl, {dataType: 'json'}).then(function(item) {
-      $.each(item.results, function(item){
+      $.each(item.results, function(i, item){
         var pokemon = {
           name: item.name,
           detailsUrl: item.url
         };
+        add(pokemon);
       });
-      add(pokemon);
-    }).catch(function(e) {
+    })
+    .catch(function(e) {
       console.error(e);
     });
   }
 
   function loadDetails(item) {
     var $url = item.detailsUrl;
-    return $.ajax(url).then(function(details) {
+    return $.ajax($url).then(function(details) {
       // details are added to the item
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
