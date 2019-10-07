@@ -84,6 +84,7 @@ var pokemonRepository = (function(){
     $closeButtonElement.on('click', hideModal);
 
     // Appending modal and its content to page
+    $modal.append($closeButtonElement);
     $modal.append($nameElement);
     $modal.append($imageElement);
     $modal.append($heightElement);
@@ -107,8 +108,14 @@ var pokemonRepository = (function(){
     }
   });
 
-
   // EventListener that hides modal when clicking outside
+  var $modalContainer = $('#modal-container');
+  $modalContainer.on('click', function(event) {
+    var $target = event.target;
+    if ($target === $modalContainer) {
+      hideModal();
+    }
+  });
 
   return {
     getAll: getAll,
