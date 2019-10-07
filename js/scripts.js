@@ -99,6 +99,17 @@ var pokemonRepository = (function(){
     $modalContainer.removeClass('is-visible');
   }
 
+  // EventListener that hides modal when pressing esc
+  $window.on('keydown', function(event) {
+    var $modalContainer = $('#modal-container');
+    if (event.key === 'Escape' && $modalContainer.hasClass('is-visible')) {
+      hideModal();
+    }
+  });
+
+
+  // EventListener that hides modal when clicking outside
+
   return {
     getAll: getAll,
     add: add,
