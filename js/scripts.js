@@ -52,7 +52,9 @@ var pokemonRepository = (function(){
       // details are added to the item
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = Object.keys(details.types);
+      item.types = details.types.map(function(pokemon) {
+        return pokemon.type.name;
+      });
     }).catch(function(e) {
       console.error(e);
     });
@@ -110,7 +112,7 @@ var pokemonRepository = (function(){
 
   // EventListener that hides modal when clicking outside
   var $modalContainer = $('#modal-container');
-  $modalContainer.on('click', function(event) {    
+  $modalContainer.on('click', function(event) {
     var target = event.target;
     if (target === $modalContainer) {
       hideModal();
