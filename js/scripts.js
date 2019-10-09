@@ -62,8 +62,15 @@ var pokemonRepository = (function(){
   //showDetails function shows pokemon's details after clicking on pokemons name
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function() {
+      var $modalDialog = $('.modal-dialog');
+      var $modalBody = $('.modal-body');
+      var $modalTitle = $('.modal-title');
+      var $nameElement = $('.modal-title').text(item.name[0].toUpperCase()+item.name.slice(1));
+      var $imageElement = $('<img class="pokemon-img" alt="a picture of current pokemon">').attr('src', item.imageUrl);
+      var $heightElement = $('<p class="pokemon-height"></p>').text('Height: ' + item.height);
+      var $typesElement = $('<p class="pokemon-types"></p>').text('Types: ' + item.types);
       console.log(item);
-      showModal(item);
+
     });
   }
 
