@@ -71,11 +71,13 @@ var pokemonRepository = (function(){
       var $typesElement = $('<p class="pokemon-types"></p>').text('Types: ' + item.types);
       console.log(item);
 
+
     // Appending modal's content to page
     $modalTitle.append($nameElement);
     $modalBody.append($imageElement);
     $modalBody.append($heightElement);
     $modalBody.append($typesElement);
+
     });
   }
 
@@ -96,6 +98,8 @@ pokemonRepository.loadList().then(function() {
   });
 });
 
+
+
 // function for filter/search pokemon list by name
 $(document).ready(function(){
   $('#pokemon-search').on('keyup', function() {
@@ -105,10 +109,3 @@ $(document).ready(function(){
     });
   });
 });
-
-// Example for using jQuery $.each() --- REMOVE WHEN PAGE WORKS AS EXPECTED!!!!!!
-//************************************************
-// var arr = ['a', 'b', 'c'];
-// $.each(arr , function (index, value){
-//   console.log(arr);
-// });
