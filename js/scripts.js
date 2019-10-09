@@ -96,6 +96,16 @@ pokemonRepository.loadList().then(function() {
   });
 });
 
+// function for searching pokemon by name
+$(document).ready(function(){
+  $('#pokemon-search').on('keyup', function() {
+    var value = $(this).val().toLowerCase();
+    $('.list-group-item').filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
 // Example for using jQuery $.each() --- REMOVE WHEN PAGE WORKS AS EXPECTED!!!!!!
 //************************************************
 // var arr = ['a', 'b', 'c'];
