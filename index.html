@@ -9,12 +9,21 @@
     <link rel="stylesheet" type="text/CSS" href="css/styles.css">
   </head>
   <body>
-    <div class="container">
-      <div class="pokeball-icon">
-        <img src="img/pokeball-icon.svg" alt="pokeball icon">
+    <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #cce3f7;">
+      <a class="navbar-brand" href="index.html">
+        <h1>Pokédex</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Search form -->
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" id="pokemon-search" type="search" placeholder="Search a Pokemon" aria-label="Search a Pokemon">
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
       </div>
-      <h1>Pokédex</h1>
-    </div>
+    </nav>
     <div id="modal-container"></div>
     <ul class="pokemon-list"></ul>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
