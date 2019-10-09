@@ -17,19 +17,6 @@ var pokemonRepository = (function(){
     }
   }
 
-  // addListItem function written by exchanging querySelector with jQuery
-  //created list with buttons that have pokemons' names on it
-  function addListItem(pokemon) {
-    var $pokelist = $('.pokemon-list');
-    var $listItem = $('<li></li>');
-    var $button = $('<button class="name-button"></button>').text(pokemon.name[0].toUpperCase()+pokemon.name.slice(1));
-    $listItem.append($button);
-    $pokelist.append($listItem);
-    $button.on('click', function(event) {
-      showDetails(pokemon);
-    });
-  }
-
   // function for fetching data from API - jQuery: ajax()
   function loadList() {
     return $.ajax(apiUrl, {dataType: 'json'}).then(function(item) {
@@ -45,6 +32,21 @@ var pokemonRepository = (function(){
       console.error(e);
     });
   }
+
+  // addListItem function written by exchanging querySelector with jQuery
+  //created list with buttons that have pokemons' names on it
+  function addListItem(pokemon) {
+    var $pokelist = $('.pokemon-list');
+    var $listItem = $('<li></li>');
+    var $button = $('<button class="name-button"></button>').text(pokemon.name[0].toUpperCase()+pokemon.name.slice(1));
+    $listItem.append($button);
+    $pokelist.append($listItem);
+    $button.on('click', function(event) {
+      showDetails(pokemon);
+    });
+  }
+
+
 
   function loadDetails(item) {
     var $url = item.detailsUrl;
