@@ -79,57 +79,6 @@ var pokemonRepository = (function(){
     });
   }
 
-  function showModal(item) {
-    var $modalContainer = $('#modal-container');
-
-    //Clear all existing content in modal
-    $modalContainer.empty();
-
-    // Create elements that hold name and detailed information about pokemon
-    var $modal = $('<div class="modal"></div>');
-    var $nameElement = $('<h1></h1>').text(item.name[0].toUpperCase()+item.name.slice(1));
-    var $imageElement = $('<img class="pokemon-img" alt="a picture of current pokemon">').attr('src', item.imageUrl);
-    var $heightElement = $('<p class="pokemon-height"></p>').text('Height: ' + item.height);
-    var $typesElement = $('<p class="pokemon-types"></p>').text('Types: ' + item.types);
-
-    // Add closing button for modal with event listener
-    var $closeButtonElement = $('<button class="modal-close"></button>').text('X');
-    $closeButtonElement.on('click', hideModal);
-
-    // Appending modal and its content to page
-    $modal.append($closeButtonElement);
-    $modal.append($nameElement);
-    $modal.append($imageElement);
-    $modal.append($heightElement);
-    $modal.append($typesElement);
-    $modalContainer.append($modal);
-
-    $modalContainer.addClass('is-visible');
-  }
-
-  // Hides Modal when clicked on closing button [see eventListener]
-  function hideModal() {
-    var $modalContainer = $('#modal-container');
-    $modalContainer.removeClass('is-visible');
-  }
-
-  // EventListener that hides modal when pressing esc
-  $(window).on('keydown', function(event) {
-    var $modalContainer = $('#modal-container');
-    if (event.key === 'Escape' && $modalContainer.hasClass('is-visible')) {
-      hideModal();
-    }
-  });
-
-  // EventListener that hides modal when clicking outside
-  var $modalContainer = $('#modal-container');
-  $modalContainer.on('click', function(event) {
-    var target = event.target;
-    if (target === $modalContainer) {
-      hideModal();
-    }
-  });
-
   return {
     getAll: getAll,
     add: add,
