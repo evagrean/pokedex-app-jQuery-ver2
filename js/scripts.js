@@ -33,6 +33,20 @@ var pokemonRepository = (function(){
     });
   }
 
+  function loadDetails(item) {
+    var $url = item.detailsUrl;
+    return $.ajax($url).then(function(details) {
+      // details are added to the item
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = item.types = details.types.map(function(pokemon) {
+        return " " + pokemon.type.name;
+      });
+    }).catch(function(e) {
+      console.error(e);
+    });
+  }
+
   // addListItem function written by exchanging querySelector with jQuery
   //created list with buttons that have pokemons' names on it
   function addListItem(pokemon) {
