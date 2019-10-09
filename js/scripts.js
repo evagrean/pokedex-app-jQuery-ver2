@@ -71,7 +71,7 @@ var pokemonRepository = (function(){
       var $typesElement = $('<p class="pokemon-types"></p>').text('Types: ' + item.types);
       console.log(item);
 
-      // Appending modal's content to page
+    // Appending modal's content to page
     $modalTitle.append($nameElement);
     $modalBody.append($imageElement);
     $modalBody.append($heightElement);
