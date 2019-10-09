@@ -96,7 +96,7 @@ pokemonRepository.loadList().then(function() {
   });
 });
 
-// function for searching pokemon by name
+// function for filter/search pokemon list by name
 $(document).ready(function(){
   $('#pokemon-search').on('keyup', function() {
     var value = $(this).val().toLowerCase();
