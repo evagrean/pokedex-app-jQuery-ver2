@@ -33,6 +33,7 @@ var pokemonRepository = (function(){
     });
   }
 
+  // function which loads details about pokemon that are later displayed in modal
   function loadDetails(item) {
     var $url = item.detailsUrl;
     return $.ajax($url).then(function(details) {
@@ -57,22 +58,6 @@ var pokemonRepository = (function(){
     $pokelist.append($listItem);
     $button.on('click', function(event) {
       showDetails(pokemon);
-    });
-  }
-
-
-
-  function loadDetails(item) {
-    var $url = item.detailsUrl;
-    return $.ajax($url).then(function(details) {
-      // details are added to the item
-      item.imageUrl = details.sprites.front_default;
-      item.height = details.height;
-      item.types = details.types.map(function(pokemon) {
-        return pokemon.type.name;
-      });
-    }).catch(function(e) {
-      console.error(e);
     });
   }
 
