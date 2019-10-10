@@ -59,7 +59,7 @@ var pokemonRepository = (function(){
     });
   }
 
-  //showDetails function shows pokemon's details after clicking on pokemons name
+  //showDetails function shows pokemon's details in a modal after clicking on pokemons name
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function() {
       var $modalDialog = $('.modal-dialog');
